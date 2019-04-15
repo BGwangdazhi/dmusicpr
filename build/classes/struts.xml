@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.multipart.maxSize" value="1048576000" />
+	<package name="dydin" extends="struts-default">
+		<action name="user_*" class="com.dmusic.action.UserAction"
+			method="{1}">
+			<result name="succ" type="redirect">main.html</result>
+			<result name="fail">signin.jsp</result>
+		</action>
+
+
+		<action name="video_*" class="com.dmusic.action.VideoAction"
+			method="{1}">
+			<result name="succ">dyboss/video_list.jsp</result>
+		</action>
+
+          <action name="index_*" class="com.dmusic.action.IndexAction"
+			method="{1}">
+			<result name="dindex">dindex.jsp</result>
+		</action>
+
+        <action name="musician_*" class="com.dmusic.action.MusicianAction"
+			method="{1}">
+			<result name="succ">dupload.jsp</result>
+			<result name="list">dmusician.jsp</result>
+		</action>
+	</package>
+
+</struts>

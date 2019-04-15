@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录提示</title>
+    <link rel="stylesheet" href="css/dyin.css"/>
+    <script>
+        function startLoginPage() {
+            // 1.完成登录，登录的状态保存到浏览器里面
+            // 2.关闭layer弹窗
+            // 3.刷新parent页面，也就是抖音音乐人页面
+            localStorage.setItem('dyin-user', 'zhangsan');
+            parent.layer.closeAll();
+            parent.window.location.reload(); // 刷新父级页面
+        }
+    </script>
+</head>
+<body>
+    <p class="layer-title">抖音将默认以您在此页面注册/登陆的手机号为账号参与比赛，后续消息都会发送到该账号上，请谨慎填写手机号。</p>
+    <p class="layer-subtitle">温馨提示：如果已有抖音账号，请先到抖音app个人主页。点击右上角“…”—设置—账号管理，绑定手机号，再用该手机号来登录哦！</p>
+    <div style="text-align: center; margin-top: 50px">
+        <a class="layer-btn" href="javascript:startLoginPage()">登录</a>
+    </div>
+
+</body>
+</html>

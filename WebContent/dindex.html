@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>抖音</title>
+<link rel="stylesheet" href="css/dyin.css" />
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+	$(function() {
+		var video = $('#video');
+		var player = $('#player');
+		player.click(function() {
+			if (player.attr('src') == 'image/player_close.png') {
+				video.get(0).muted = false;
+				player.attr('src', 'image/player.png');
+			} else {
+				video.get(0).muted = true;
+				player.attr('src', 'image/player_close.png');
+			}
+		});
+
+		// 动画的代码
+		var qrcode = $('#qrcode');
+		var qrcodeBig = $('#qrcodeBig');
+		var androidIOS = $('.android-ios');
+		// 小图的鼠标移入事件
+		qrcode.mouseover(function() {
+			// alert('小图鼠标移入');
+			// 大图淡入进来
+			qrcodeBig.show(); // 显示qrcodeBig
+			// 把qrcodeBig的透明度改为全不透明
+			qrcodeBig.animate({
+				'opacity' : 1,
+				'width' : '238px',
+				'height' : '238px'
+			}, 300);
+			androidIOS.animate({
+				'opacity' : 0
+			}, 300);
+		});
+		// 大图的鼠标移出事件
+		qrcodeBig.mouseout(function() {
+			// alert('大图鼠标移出');
+			qrcodeBig.animate({
+				'opacity' : 0,
+				'width' : '0',
+				'height' : '0'
+			}, 300, function() {
+				qrcodeBig.hide();
+			});
+			androidIOS.animate({
+				'opacity' : 1
+			}, 300);
+		})
+	})
+	// 平移、旋转、淡入淡出、缩放
+</script>
+</head>
+<body>
+	<!-- 1.放置背景视频 -->
+	<video id="video" muted loop autoplay src="video/video.mp4"></video>
+	<!-- 块级标签：容器，多个div垂直排列 -->
+	<div class="index-header">
+		<img class="index-logo" src="image/logo.png" />
+
+		<!-- 块级标签 -->
+		<img id="player" style="float: right; margin: 48px 100px 0 10px"
+			src="image/player_close.png" />
+		<p>企业认证</p>
+		<p>机构认证</p>
+		<p>
+			<a href="dmusician.html">抖音音乐人</a>
+		</p>
+	</div>
+	<div class="index-footer">
+		<p>| 音乐 |用户服务协议 | 隐私政策 | 账号找回 | 联系我们 | 广告投放 |</p>
+		<p>2018 © 抖音 | 京ICP备16016397号-3 | 北京微播视界科技有限公司 | 京B2-20170846</p>
+		<p>中国互联网举报中心 | 网络文化许可证-京网文-（2016）2282-264号 |
+			违法和不良信息举报：010-83434212 | 举报邮箱：jubao@douyin.com</p>
+		<p>京公网安备 11010802023605号 | 地址 : 北京市海淀区知春路51号4层408</p>
+	</div>
+	<div class="index-slogan">
+		<img style="margin-right: 100px; margin-bottom: 50px"
+			src="image/slogan.png" width="450" /> <br /> <img
+			class="android-ios" style="width: 144px" src="image/appstore.png" />
+		<img class="android-ios" style="width: 144px" src="image/android.png" />
+		<!-- 二维码 -->
+		<div
+			style="display: inline-block; vertical-align: top; margin-right: 100px; position: relative">
+			<img id="qrcode" style="width: 50px" src="image/qrcode.png" /> <img
+				hidden id="qrcodeBig"
+				style="position: absolute; top: 0; right: 0; opacity: 0; width: 0; height: 0"
+				src="image/qrcode_big.png" />
+		</div>
+
+	</div>
+</body>
+</html>
